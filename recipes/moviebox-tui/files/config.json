@@ -1,0 +1,21 @@
+{
+  "auto_update": true,
+  "last_update_check": 1793264017,
+  "active_mode": "streaming",
+  "active_provider": "addons",
+  "active_theme": "Mocha",
+  "moviebox_enabled": true,
+  "fourkhdhub_enabled": true,
+  "dramachi_enabled": true,
+  "bdix_circleftp_enabled": false,
+  "bdix_dhakaflix_enabled": false,
+  "bdix_probed": true,
+  "streaming_enabled": true,
+  "tv_enabled": true,
+  "addons_enabled": true,
+  "default_player": "vlc",
+  "download_dir": null,
+  "vlc_path": null,
+  "mpv_path": null,
+  "iina_path": null
+}

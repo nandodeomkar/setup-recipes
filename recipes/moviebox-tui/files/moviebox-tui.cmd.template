@@ -1,0 +1,3 @@
+@echo off
+rem Speed-capped moviebox-tui (see {{HOME}}\moviebox-cap\moviebox_cap.py). Uncapped: moviebox-tui.exe
+"{{PYTHON_EXE}}" "{{HOME}}\moviebox-cap\moviebox_cap.py" %*

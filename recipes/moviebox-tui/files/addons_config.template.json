@@ -1,0 +1,106 @@
+[
+  {
+    "manifest_url": "https://v3-cinemeta.strem.io/manifest.json",
+    "name": "Cinemeta",
+    "version": "3.0.14",
+    "description": "Official Catalog and Metadata",
+    "enabled": true,
+    "provides_catalog": true,
+    "provides_meta": true,
+    "provides_stream": false,
+    "id_prefixes": [
+      "tt"
+    ],
+    "types": [
+      "movie",
+      "series"
+    ]
+  },
+  {
+    "manifest_url": "https://hdhub.thevolecitor.qzz.io/eyJ0b3Jib3giOiJ1bnNldCIsInF1YWxpdGllcyI6IjIxNjBwLDEwODBwLDcyMHAiLCJzb3J0IjoiZGVzYyJ9/manifest.json",
+    "name": "HdHub",
+    "version": "1.0.7",
+    "description": "Watch movies and series from HdHub.",
+    "enabled": true,
+    "provides_catalog": true,
+    "provides_meta": false,
+    "provides_stream": true,
+    "id_prefixes": [
+      "tt",
+      "tmdb:",
+      "kitsu:"
+    ],
+    "types": [
+      "movie",
+      "series",
+      "HdHub"
+    ]
+  },
+  {
+    "manifest_url": "https://pengu.uk/%7B%22auth_token%22%3A%22{{PENGUPLAY_AUTH_TOKEN}}%22%7D/manifest.json",
+    "name": "PenguPlay",
+    "version": "1.4.0",
+    "description": "Stream movies and series in Stremio with configurable provider and quality filters.",
+    "enabled": true,
+    "provides_catalog": true,
+    "provides_meta": true,
+    "provides_stream": true,
+    "id_prefixes": [
+      "tt",
+      "tmdb:",
+      "tvdb:",
+      "mal:",
+      "kitsu:",
+      "tvmaze:",
+      "anilist:",
+      "anidb:",
+      "pp-live:"
+    ],
+    "types": [
+      "movie",
+      "series",
+      "tv"
+    ]
+  },
+  {
+    "manifest_url": "https://dramayo.stream/manifest.json",
+    "name": "Dramayo",
+    "version": "1.19.5",
+    "description": "Watch Asian dramas and movies.",
+    "enabled": true,
+    "provides_catalog": true,
+    "provides_meta": true,
+    "provides_stream": true,
+    "id_prefixes": [
+      "tt",
+      "imdb:",
+      "d1:"
+    ],
+    "types": [
+      "series",
+      "movie"
+    ]
+  },
+  {
+    "manifest_url": "https://yastream.tamthai.de/manifest.json",
+    "name": "yastream",
+    "version": "0.11.1",
+    "description": "Yet Another Stream. Stream asian dramas, series and movies directly with multiple providers. Support catalogs with country selection. Powered by TMDB and TVDB for metadata",
+    "enabled": true,
+    "provides_catalog": true,
+    "provides_meta": true,
+    "provides_stream": true,
+    "id_prefixes": [
+      "tt",
+      "tmdb",
+      "tvdb",
+      "idrama",
+      "kisskh",
+      "onetouchtv"
+    ],
+    "types": [
+      "movie",
+      "series"
+    ]
+  }
+]

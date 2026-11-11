@@ -1,0 +1,35 @@
+services:
+  neko:
+    image: "ghcr.io/m1k1o/neko/google-chrome:latest"
+    restart: "always"
+    # Pinned so Chrome's profile SingletonLock stays valid across container
+    # recreates - otherwise the new container's random hostname makes Chrome
+    # refuse to start on the persistent profile.
+    hostname: "neko"
+    shm_size: "2gb"
+    volumes:
+      - neko-chrome:/home/neko/.config/google-chrome
+      - ./policies.json:/etc/opt/chrome/policies/managed/policies.json:ro
+      - "{{YTM_LYRICS_EXTENSION_DIR}}:/home/neko/extensions/ytm-lyrics:ro"
+    ports:
+      - "8080:8080"
+      - "56000-56100:56000-56100/udp"
+    environment:
+      NEKO_DESKTOP_SCREEN: "1280x720@30"
+      # Image runs in legacy (V2) config mode - "legacy configuration is enabled"
+      # in the logs - so the V3 key NEKO_CAPTURE_VIDEO_CODEC is silently ignored.
+      # NEKO_VIDEO_CODEC is the one that actually reaches the gst pipeline.
+      NEKO_VIDEO_CODEC: "h264"
+      # REQUIRED with h264: the legacy path leaves openh264enc at bitrate=0,
+      # which fails ParamValidationExt -> pipeline is destroyed -> blank screen.
+      NEKO_VIDEO_BITRATE: "3000"
+      NEKO_MEMBER_MULTIUSER_USER_PASSWORD: "{{NEKO_USER_PASSWORD}}"
+      NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD: "{{NEKO_ADMIN_PASSWORD}}"
+      NEKO_WEBRTC_EPR: "56000-56100"
+      NEKO_WEBRTC_ICELITE: "1"
+      NEKO_WEBRTC_ESTIMATOR_ENABLED: "1"
+      NEKO_WEBRTC_NAT1TO1: "{{TAILSCALE_IP}}"
+
+volumes:
+  neko-chrome:
+    external: true

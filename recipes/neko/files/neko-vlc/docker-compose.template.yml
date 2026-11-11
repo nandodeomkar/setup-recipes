@@ -1,0 +1,35 @@
+name: neko-vlc
+
+# VLC watch-party stack, fully separate from ~/neko (Chrome): its own compose
+# project, ports, and no shared volumes - nothing here touches neko-chrome.
+# On-demand: `docker compose up -d` for a movie night, `docker compose down` after.
+services:
+  vlc:
+    image: "ghcr.io/m1k1o/neko/vlc:latest"
+    restart: "no"
+    shm_size: "2gb"
+    volumes:
+      # Read-only, so nothing inside neko can modify or delete the movie.
+      - "{{MEDIA_DIR}}:/media:ro"
+    ports:
+      - "8081:8080"
+      # Below Windows' UDP dynamic range (49152+), so svchost can't grab a port
+      # in it and no netsh exclusion is needed. ~1 port per viewer.
+      - "48000-48020:48000-48020/udp"
+    environment:
+      # The image's supervisord runs `vlc ... %(ENV_VLC_MEDIA)s` unquoted, so a
+      # flag can ride along: open /media paused at 0:00 instead of autoplaying
+      # to an empty room. Remove "--start-paused " to autoplay.
+      VLC_MEDIA: "--start-paused /media"
+      NEKO_DESKTOP_SCREEN: "1280x720@30"
+      # Same codec settings as ~/neko: legacy (V2) config mode means
+      # NEKO_VIDEO_CODEC is the key that reaches the gst pipeline, and h264
+      # needs an explicit bitrate or openh264enc fails -> blank screen.
+      NEKO_VIDEO_CODEC: "h264"
+      NEKO_VIDEO_BITRATE: "3000"
+      NEKO_MEMBER_MULTIUSER_USER_PASSWORD: "{{VLC_USER_PASSWORD}}"
+      NEKO_MEMBER_MULTIUSER_ADMIN_PASSWORD: "{{VLC_ADMIN_PASSWORD}}"
+      NEKO_WEBRTC_EPR: "48000-48020"
+      NEKO_WEBRTC_ICELITE: "1"
+      NEKO_WEBRTC_ESTIMATOR_ENABLED: "1"
+      NEKO_WEBRTC_NAT1TO1: "{{TAILSCALE_IP}}"
