@@ -1,3 +1,6 @@
 # Filled-in copies of templates hold secrets. Never commit them.
 recipes/*/files/*.filled.*
 recipes/*/secrets.local.*
+
+# Per-machine install notes.
+recipes/*/installed.local.md

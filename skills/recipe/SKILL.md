@@ -93,6 +93,11 @@ If a log contradicts an owner's note, record both and do not pick a side.
 
 Record what the setup shares with a stock install as well as what it separates.
 
+A quirk is something the owner chose or changed. Behaviour that any install of
+the app has is not a quirk, even if it is surprising. If it is worth knowing for
+troubleshooting, put it in a section named "Normal behaviour worth knowing" after
+the numbered quirks.
+
 ### 4. Check before you finish
 
 - Search the whole recipe folder for every secret value you saw, the user's
@@ -128,7 +133,10 @@ nowhere else.
 8. Run every **Verify** check and report each result. The install is not done
    until they pass.
 9. Report which items under `state_not_in_recipe` the user must restore by hand,
-   such as signing in.
+   such as signing in or copying back history from a backup.
+10. Add a line to `installed.local.md` in the recipe's folder: the date, the
+    machine's name, the version that was installed, and "installed by recipe".
+    Never write a secret there. The file is local and is not shared.
 
 Never save a filled-in template inside the library.
 
@@ -138,7 +146,9 @@ Never save a filled-in template inside the library.
    steps whose target is already gone.
 2. Show the plan, including the "leave alone" list. Wait for a yes.
 3. For each step marked as destroying data, name exactly what will be lost and
-   ask again. Offer to skip it.
+   ask again. Offer to skip it. Before the first such step, list everything
+   under `state_not_in_recipe` and say that a later install will not bring it
+   back. Offer to wait while the user backs it up.
 4. Run the steps. Then confirm each removed thing is gone and each "leave alone"
    thing is still there.
 
@@ -154,7 +164,9 @@ Read-only. Never fix anything during doctor. Offer fixes at the end.
 3. Compare live settings with `files/`. Ignore placeholder values and fields the
    recipe says change on their own. Everything else is **drift**.
 4. Compare the app's version, or image digest, with the recipe. A difference
-   means the app itself changed.
+   means the app itself changed. Read `installed.local.md` if it exists: if the
+   recipe was installed on this machine at the version you see now, say that the
+   difference comes from the install, not from a later update.
 5. If the user gave a symptom, find every quirk whose **Can cause** matches it
    and run that quirk's **Rule it out** test.
 6. Give one verdict, with the evidence:

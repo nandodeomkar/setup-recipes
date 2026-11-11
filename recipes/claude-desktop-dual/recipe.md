@@ -114,4 +114,4 @@ Code settings shared by both apps), `%APPDATA%\Claude-NativeHost`.
    `Claude-Personal.old-*`. Any of these means a sign-in script was interrupted.
 5. For the reported symptom, go through [QUIRKS.md](QUIRKS.md) and run the
    "Rule it out" test of each quirk that lists a matching symptom.
-6. Conclude one of: Claude Desktop itself, a named quirk, drift, or an expired login.
+6. Give one of the standard verdicts, with the evidence.

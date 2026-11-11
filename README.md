@@ -10,8 +10,11 @@ is it the app, or is it my setup?
 This project keeps one **recipe** per setup. An AI agent reads it to rebuild the
 setup on another machine, remove it cleanly, or answer that question.
 
-Status: early draft. The format has been tried on three setups on one Windows
-machine. No recipe has yet been installed from scratch on a clean machine.
+Status: early draft. The format has been tried on four setups on one Windows
+machine. Each command has been run once by a fresh agent session using only the
+skill: capture on markitdown, then uninstall, install and doctor on moviebox-tui.
+No recipe has yet been installed on a clean machine, and the neko and Claude
+recipes have never been installed or uninstalled from.
 
 ## What a recipe holds
 
@@ -60,6 +63,8 @@ proposes.
 | [moviebox-tui](recipes/moviebox-tui) | A launcher that wraps the app to cap its download speed; addon settings with a token removed |
 | [neko](recipes/neko) | Two Docker stacks, a Windows port reservation, a VPN address, state that cannot be captured |
 | [claude-desktop-dual](recipes/claude-desktop-dual) | One app run as two profiles for two accounts, with a sign-in procedure to maintain |
+
+| [markitdown](recipes/markitdown) | Captured by the skill unaided: a hand-made launcher replacing a tool's own, with evidence that contradicts the reason for it |
 
 These are one person's real setups, captured on Windows 11.
 

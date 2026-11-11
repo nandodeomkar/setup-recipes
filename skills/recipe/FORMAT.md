@@ -45,7 +45,17 @@ Sections, in order:
 3. **Maintain** – optional. Chores the setup needs again and again, such as
    signing in again when a login expires.
 4. **Uninstall** – numbered steps, plus a list of things that must be left alone.
-5. **Doctor** – how to compare a live machine against this recipe.
+5. **Doctor** – the checks that are specific to this setup. Do not list the
+   possible verdicts in a recipe. They are the same for every recipe:
+   - **No fault found** – every check passed and nothing has drifted.
+   - **The app** – the problem remains with the quirks ruled out.
+   - **A quirk** – named.
+   - **Drift** – the live setup differs from the recipe.
+   - **A missing need** – something the setup depends on is absent or off.
+   - **Not established** – there is not enough evidence to tell.
+
+A recipe folder may also hold `installed.local.md`, a local note of when and at
+what version the recipe was installed on this machine. It is not shared.
 
 ## QUIRKS.md
 
@@ -58,6 +68,10 @@ One entry per quirk. Every entry has the same five parts:
 - **Rule it out** – the quickest way to test whether this quirk is to blame.
 
 "Rule it out" is the part that answers "is it the app, or my setup?".
+
+Only things the owner chose or changed are quirks. Surprising behaviour that
+every install has goes in a section "Normal behaviour worth knowing" after the
+numbered quirks.
 
 ## files/
 

@@ -131,4 +131,4 @@ folder, and the other reserved UDP range (50000-50059).
    itself was updated.
 6. For the reported symptom, go through [QUIRKS.md](QUIRKS.md) and run the
    "Rule it out" test of each quirk that lists a matching symptom.
-7. Conclude one of: neko itself, a named quirk, drift, or a missing need.
+7. Give one of the standard verdicts, with the evidence.

@@ -2,7 +2,11 @@
 name: moviebox-tui
 captured_on: 2026-11-11
 captured_from: Windows 11 Home (10.0.26300)
-app_version: 0.1.24   # auto-update is on, so a fresh install may be newer
+app_version: 0.1.24   # at capture. Auto-update is on and the installer fetches the latest, so a fresh install may be newer (0.1.29 on 2026-11-11)
+state_not_in_recipe:
+  - "%APPDATA%\\moviebox-tui\\history.json": watch history. An uninstall deletes it and an install does not bring it back.
+  - "%APPDATA%\\moviebox-tui\\tv_config.json": the TV list (empty at capture).
+  - "%LOCALAPPDATA%\\moviebox-tui": caches, posters, subtitles and logs. The app rebuilds these.
 source: https://github.com/mesamirh/MovieBox-Tui   # official installer: install.ps1 on the main branch
 needs:
   - Python 3.12 (runs the speed-cap helper; standard library only)
@@ -91,4 +95,4 @@ Python, and VLC.
    Report every other difference as drift.
 3. For the reported symptom, go through [QUIRKS.md](QUIRKS.md) and run the
    "Rule it out" test of each quirk that lists a matching symptom.
-4. Conclude one of: the app itself, a named quirk, or drift from the recipe.
+4. Give one of the standard verdicts, with the evidence.

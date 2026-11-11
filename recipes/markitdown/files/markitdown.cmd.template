@@ -1,0 +1,2 @@
+@echo off
+"{{UV_TOOL_DIR}}\markitdown\Scripts\markitdown.exe" %*
