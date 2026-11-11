@@ -1,4 +1,4 @@
-# Agentic Package Manager
+# setup-recipes
 
 Install, uninstall and troubleshoot apps the way **you** set them up.
 
