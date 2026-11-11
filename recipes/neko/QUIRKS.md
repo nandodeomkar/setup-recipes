@@ -31,7 +31,9 @@ entries come from its settings file only.
 ## 2. Screen is 1280x720 at 30 frames per second
 
 - **What:** Lowered from 1920x1080 at 60 on 2026-09-04.
-- **Why:** Not recorded.
+- **Why:** From the owner: a remote viewer saw skipping and buffering while the
+  host's own picture was smooth. The owner judged that a 30 Mbps home
+  connection could not send a full HD stream to that viewer, and lowered it.
 - **Where:** `NEKO_DESKTOP_SCREEN` in both compose files. The older file is kept
   as `docker-compose.yml.pre-720p`.
 - **Can cause:** Softer picture and less smooth motion than a stock setup.
@@ -41,8 +43,9 @@ entries come from its settings file only.
 
 - **What:** `NEKO_WEBRTC_NAT1TO1` tells neko to announce one address to viewers:
   this machine's Tailscale address.
-- **Why:** Not recorded. The effect is that people on your Tailscale network can
-  watch without opening ports on the router.
+- **Why:** From the owner: the regular viewer is in another country, and the
+  setup must not be reachable from the open internet. Tailscale lets that
+  viewer in without opening ports on the router.
 - **Where:** `NEKO_WEBRTC_NAT1TO1` in both compose files. Needs Tailscale signed in.
 - **Can cause:**
   - The page loads and login works, but the video never appears. This happens
@@ -81,8 +84,8 @@ entries come from its settings file only.
 
 - **What:** The volume `neko-chrome` is marked `external`, so Docker neither
   creates nor deletes it with the stack.
-- **Why:** Not recorded. The effect is that `docker compose down -v` cannot wipe
-  the logins by accident.
+- **Why:** From the owner, with some doubt ("yes I think"): so that
+  `docker compose down -v` cannot wipe the logins by accident.
 - **Where:** `volumes` in the Chrome compose file. A copy of the profile from
   2026-07-29 is in `{{HOME}}\neko\chrome-profile-backup`.
 - **Can cause:**
@@ -97,7 +100,8 @@ entries come from its settings file only.
   extensions is allowed, and the block on installing other extensions was
   removed. The "Yt Music Lyrics Extension" project folder is mounted into the
   container read-only.
-- **Why:** Not recorded. It matches what is needed to load that extension by hand.
+- **Why:** From the owner: to load that extension by hand. An earlier version
+  was buggy and the extension is being rebuilt, so it is still wanted.
 - **Where:** `{{HOME}}\neko\policies.json`; the third `volumes` line in the Chrome
   compose file.
 - **Can cause:**
@@ -105,7 +109,8 @@ entries come from its settings file only.
     or renamed, Docker mounts an empty folder and the extension vanishes.
   - **Found at capture:** the folder is empty, and from inside the container it
     has been since 2026-08-14. The extension is not loaded in the shared Chrome.
-    The loosened rules are in force with nothing using them.
+    The loosened rules are in force with nothing using them. The owner
+    confirms this is expected until the rebuilt extension is ready.
   - Any viewer with control of the browser can install extensions.
   - Changes to the extension's files appear in neko only after reloading it.
 - **Rule it out:** Open `chrome://extensions` inside the shared browser and check
@@ -148,7 +153,8 @@ entries come from its settings file only.
   its compose file. The Chrome stack's pair was changed on 2026-11-01 to short
   four-digit values. The VLC stack still has the earlier, longer pair. The
   backup files in `{{HOME}}\neko` also contain the earlier pair.
-- **Why:** Not recorded.
+- **Why:** From the owner: the short passwords make logging in easier. The VLC
+  stack is rarely used, so its older passwords were never changed.
 - **Where:** Both compose files, `docker-compose.yml.bak`, `docker-compose.yml.pre-720p`.
 - **Can cause:**
   - "Wrong password" when a viewer uses the VLC password on the Chrome page or

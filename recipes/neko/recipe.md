@@ -34,7 +34,7 @@ unconfirmed:
   - What the two force-installed extension IDs in policies.json are. They look like neko's stock pair (an ad blocker and SponsorBlock).
   - Whether a second reserved UDP range found on the machine (50000-50059) belongs to this setup.
   - Whether a Windows firewall rule is needed. None named "neko" was found.
-  - The extension project folder is empty, and has been since 2026-08-14 as seen from inside the container. Where the extension's files now live is unknown.
+  - The extension project folder is empty, and has been since 2026-08-14 as seen from inside the container. The owner says the extension is being rebuilt after a buggy first version.
   - Whether the newer codec setting name would work if both older-style names were removed (see quirk 1).
   - The media folder for neko-vlc ("VLC Neko" on the Desktop) did not exist at capture.
 ---

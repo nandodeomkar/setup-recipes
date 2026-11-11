@@ -40,7 +40,8 @@ not know the reason and the owner should fill it in.
 
 - **What:** The app uses addons as its active source. Five are installed:
   Cinemeta (catalogue only), HdHub, PenguPlay, Dramayo and yastream.
-- **Why:** Not recorded.
+- **Why:** From the owner: these are the ones that could be found by searching
+  by hand. They were not chosen from a wider list.
 - **Where:** `%APPDATA%\moviebox-tui\addons_config.json`; `addons_enabled: true`
   and `active_provider: "addons"` in `config.json`.
 - **Can cause:**
@@ -56,7 +57,7 @@ not know the reason and the owner should fill it in.
 
 - **What:** The HdHub address contains an encoded settings block:
   qualities 2160p, 1080p and 720p; sorted highest first; no TorBox account.
-- **Why:** Not recorded.
+- **Why:** From the owner: lower-quality video is not wanted.
 - **Where:** The `manifest_url` of HdHub in `addons_config.json`.
 - **Can cause:** No 480p or lower results from HdHub.
 - **Rule it out:** Create a fresh address on the HdHub addon's settings page and
@@ -76,7 +77,8 @@ not know the reason and the owner should fill it in.
 
 - **What:** `bdix_circleftp_enabled` and `bdix_dhakaflix_enabled` are `false`.
   Both were `true` until 2026-10-02.
-- **Why:** Not recorded.
+- **Why:** From the owner: they serve Bangladesh and could not be used from
+  this machine anyway.
 - **Where:** `config.json`.
 - **Can cause:** Nothing expected. These sources serve one country's local network.
 - **Rule it out:** Not needed.
@@ -86,7 +88,8 @@ not know the reason and the owner should fill it in.
 - **What:** Backup files dated 2026-10-02 show a larger addon list that was cut
   down in five rounds (the backup names mention tvvoo, generic pengu, streamvix
   and a "5-addon removal"). `tv_config.json` was emptied the same day.
-- **Why:** Not recorded.
+- **Why:** From the owner: whatever was removed was removed because it was not
+  working. The reason for emptying the TV list is not remembered.
 - **Where:** `%APPDATA%\moviebox-tui\*.backup-*`. These backups are not part of
   the recipe.
 - **Can cause:** Confusion if an old guide or memory expects those addons.
@@ -97,7 +100,7 @@ not know the reason and the owner should fill it in.
 - **What:** Theme is `Mocha`. Player is `vlc`. No player path is set, so the app
   finds VLC by itself in `C:\Program Files (x86)\VideoLAN\VLC`. VLC is not on PATH.
   `auto_update` is on.
-- **Why:** Not recorded.
+- **Why:** From the owner: personal preference.
 - **Where:** `config.json`.
 - **Can cause:**
   - "Player not found" if VLC is installed somewhere unusual on another machine.

@@ -62,7 +62,8 @@ last used 2026-10-07. No login file was opened during capture.
 ## 4. The second app's login expires and needs the procedure above
 
 - **What:** The second profile's log holds 74 `session_stale_relogin` entries.
-- **Why:** Not established. The scripts exist because this keeps happening.
+- **Why:** The owner believes app updates trigger it. This was not tested. The
+  scripts exist because it keeps happening.
 - **Where:** `%LOCALAPPDATA%\Claude-Personal\logs\main.log`.
 - **Can cause:** The second window opens but Claude Code sessions will not
   start, or it asks to sign in again.
@@ -112,7 +113,8 @@ last used 2026-10-07. No login file was opened during capture.
 - **What:** Current logs are in `%LOCALAPPDATA%\Claude-Personal\logs` (newest
   2026-10-07). An older set stops in August 2026 in
   `%APPDATA%\Claude-Personal\logs`.
-- **Why:** Not established. Probably a change in a Claude Desktop update.
+- **Why:** Not known. The owner did not move anything, so it is probably a
+  change in a Claude Desktop update.
 - **Where:** Both folders above.
 - **Can cause:** Reading the old folder and concluding nothing has happened
   since August.
